@@ -23,21 +23,24 @@ class TodosVC: UITableViewController {
     //显示几段
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     //每段显示几行
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 20
     }
 
     //每行显示的内容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: kTodoCellID, for: indexPath)
 
-        // Configure the cell...
-
+        var contentConfiguration = cell.defaultContentConfiguration()
+        contentConfiguration.text = "昵称"
+        contentConfiguration.secondaryText = "个性签名"
+        contentConfiguration.image = UIImage(systemName: "star")
+        cell.contentConfiguration = contentConfiguration
         return cell
     }
     
