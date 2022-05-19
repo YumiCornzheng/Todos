@@ -8,39 +8,35 @@
 import UIKit
 
 class TodosVC: UITableViewController {
-
+    
+    let todos = [
+        Todo(name: "射雕英雄传", checked: false),
+        Todo(name: "鹿鼎记", checked: false),
+        Todo(name: "天龙八部", checked: false),
+        Todo(name: "倚天屠龙记", checked: false),
+        Todo(name: "神雕侠侣", checked: false)
+    
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
     //显示几段
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     //每段显示几行
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 20
     }
 
     //每行显示的内容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kTodoCellID, for: indexPath)
-
-        var contentConfiguration = cell.defaultContentConfiguration()
-        contentConfiguration.text = "昵称"
-        contentConfiguration.secondaryText = "个性签名"
-        contentConfiguration.image = UIImage(systemName: "star")
-        cell.contentConfiguration = contentConfiguration
+        let cell = tableView.dequeueReusableCell(withIdentifier: kTodoCellID, for: indexPath) as! TodoCell
+        cell.todoLabel.text = "学习iOS课程"
+        
         return cell
     }
     
