@@ -7,11 +7,11 @@
 
 import UIKit
 
-class TodosVC: UITableViewController {
+class TodosTableVC: UITableViewController {
     
-    let todos = [
+    var todos = [
         Todo(name: "射雕英雄传", checked: false),
-        Todo(name: "鹿鼎记", checked: false),
+        Todo(name: "鹿鼎记", checked: true),
         Todo(name: "天龙八部", checked: false),
         Todo(name: "倚天屠龙记", checked: false),
         Todo(name: "神雕侠侣", checked: false)
@@ -29,13 +29,26 @@ class TodosVC: UITableViewController {
     
     //每段显示几行
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return todos.count
     }
 
     //每行显示的内容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kTodoCellID, for: indexPath) as! TodoCell
-        cell.todoLabel.text = "学习iOS课程"
+        let checkBoxBtn = cell.checkBoxBtn!
+        let todoLabel = cell.todoLabel!
+        checkBoxBtn.isSelected = todos[indexPath.row].checked
+        
+        todoLabel.text = todos[indexPath.row].name
+        todoLabel.textColor = todos[indexPath.row].checked ? .tertiaryLabel : .label
+        
+        checkBoxBtn.addAction(UIAction(handler: { action in
+            //bool值进行切换
+            self.todos[indexPath.row].checked.toggle()
+            let checked = self.todos[indexPath.row].checked
+            checkBoxBtn.isSelected = checked
+            todoLabel.textColor = checked ? .tertiaryLabel: .label
+        }), for: .touchUpInside)
         
         return cell
     }

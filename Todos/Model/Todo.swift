@@ -7,9 +7,13 @@
 
 import Foundation
 
-//class Todo{
-//    var name = ""
+//class Todoa{
+//    var name : String
 //    var checked = false
+//    init(nane:String){
+//        name = ""
+//    }
+//    
 //}
 
 struct Todo{

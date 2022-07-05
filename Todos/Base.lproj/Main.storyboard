@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hkg-be-suj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I5Q-8e-ciU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TodosVC-->
+        <!--待办事项-->
         <scene sceneID="DfW-A4-3FX">
             <objects>
-                <tableViewController id="Hkg-be-suj" customClass="TodosVC" customModule="Todos" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Hkg-be-suj" customClass="TodosTableVC" customModule="Todos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="L57-Ao-FwM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,6 +32,7 @@
                                                         <constraint firstAttribute="width" constant="44" id="NaQ-JW-2oC"/>
                                                         <constraint firstAttribute="height" constant="32" id="R1M-cp-9Z6"/>
                                                     </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system" title="">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
@@ -65,14 +66,82 @@
                             <outlet property="delegate" destination="Hkg-be-suj" id="HJJ-G6-dRo"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="待办事项" id="4hU-kw-vDm">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle.fill" catalog="system" id="Gt7-sP-bvG">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <segue destination="b0L-cc-LQJ" kind="show" id="a0E-p4-HCq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoD-oG-yQD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="14"/>
+            <point key="canvasLocation" x="894" y="13"/>
+        </scene>
+        <!--添加待办事项-->
+        <scene sceneID="ejw-ZT-X6M">
+            <objects>
+                <tableViewController id="b0L-cc-LQJ" customClass="TodoTableVC" customModule="Todos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="HAC-aw-e89">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection id="MRt-ZL-yG5">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Zza-oW-nYV">
+                                        <rect key="frame" x="20" y="18" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zza-oW-nYV" id="rK1-jJ-vV2">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="b0L-cc-LQJ" id="cgL-FG-Qkb"/>
+                            <outlet property="delegate" destination="b0L-cc-LQJ" id="5F0-DQ-Uet"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="添加待办事项" id="MtQ-8d-QOR">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.backward.circle.fill" catalog="system" id="F5p-NN-ByL">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="checkmark.circle.fill" catalog="system" id="Cp8-qK-ZSs">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TDb-sp-2Xc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1728" y="13"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x9B-b4-s1p">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I5Q-8e-ciU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fui-13-TGk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hkg-be-suj" kind="relationship" relationship="rootViewController" id="wd3-z3-Tf3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDl-4B-9Uf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="13.392857142857142"/>
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

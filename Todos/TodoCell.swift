@@ -13,6 +13,10 @@ class TodoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        if
+        checkBoxBtn.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .selected)
+        checkBoxBtn.setImage(UIImage(systemName: "circle"), for: .normal)
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
