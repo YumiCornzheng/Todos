@@ -16,15 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCellID" id="kWH-8j-XR5" customClass="TodoCell" customModule="Todos" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TodoCellID" id="kWH-8j-XR5" customClass="TodoCell" customModule="Todos" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="48.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kWH-8j-XR5" id="1dn-Ze-UUE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="48.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="48.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-k9-F9K">
-                                            <rect key="frame" x="16" y="8" width="382" height="32.5"/>
+                                            <rect key="frame" x="16" y="8" width="353.5" height="32.5"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbK-Ou-BA1">
                                                     <rect key="frame" x="0.0" y="0.5" width="44" height="32"/>
@@ -40,7 +40,7 @@
                                                     </buttonConfiguration>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pK2-Ob-NgG">
-                                                    <rect key="frame" x="76" y="6" width="306" height="20.5"/>
+                                                    <rect key="frame" x="76" y="6" width="277.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -68,9 +68,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="待办事项" id="4hU-kw-vDm">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle.fill" catalog="system" id="Gt7-sP-bvG">
-                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
-                                <segue destination="b0L-cc-LQJ" kind="show" id="a0E-p4-HCq"/>
+                                <segue destination="b0L-cc-LQJ" kind="show" identifier="AddTodoID" id="a0E-p4-HCq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -82,7 +81,7 @@
         <!--添加待办事项-->
         <scene sceneID="ejw-ZT-X6M">
             <objects>
-                <tableViewController id="b0L-cc-LQJ" customClass="TodoTableVC" customModule="Todos" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TodoTableVCID" id="b0L-cc-LQJ" customClass="TodoTableVC" customModule="Todos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="HAC-aw-e89">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,11 +89,29 @@
                             <tableViewSection id="MRt-ZL-yG5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Zza-oW-nYV">
-                                        <rect key="frame" x="20" y="18" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="18" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zza-oW-nYV" id="rK1-jJ-vV2">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Pkb-lS-Ixn">
+                                                    <rect key="frame" x="5" y="3" width="364" height="37"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="b0L-cc-LQJ" id="cdA-rM-xeO"/>
+                                                    </connections>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pkb-lS-Ixn" firstAttribute="top" secondItem="rK1-jJ-vV2" secondAttribute="top" constant="3" id="0CL-1r-ORT"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pkb-lS-Ixn" secondAttribute="bottom" constant="3" id="Nbg-dE-1fI"/>
+                                                <constraint firstItem="Pkb-lS-Ixn" firstAttribute="leading" secondItem="rK1-jJ-vV2" secondAttribute="leading" constant="5" id="xjr-oH-lHr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pkb-lS-Ixn" secondAttribute="trailing" constant="5" id="yab-mJ-PXv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -107,12 +124,19 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="添加待办事项" id="MtQ-8d-QOR">
                         <barButtonItem key="leftBarButtonItem" image="chevron.backward.circle.fill" catalog="system" id="F5p-NN-ByL">
-                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="back:" destination="b0L-cc-LQJ" id="FCE-IH-Zzx"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="checkmark.circle.fill" catalog="system" id="Cp8-qK-ZSs">
-                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="done:" destination="b0L-cc-LQJ" id="uyc-PV-3NL"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="todoTextView" destination="Pkb-lS-Ixn" id="5A1-iA-3c0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDb-sp-2Xc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,6 +150,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fui-13-TGk">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -142,6 +167,9 @@
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

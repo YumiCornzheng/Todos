@@ -8,7 +8,7 @@
 import UIKit
 
 class TodosTableVC: UITableViewController {
-    
+    //对数据进行初始化赋值
     var todos = [
         Todo(name: "射雕英雄传", checked: false),
         Todo(name: "鹿鼎记", checked: true),
@@ -19,7 +19,8 @@ class TodosTableVC: UITableViewController {
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //初始化图片,设置图片的大小
+        navigationItem.rightBarButtonItem?.image = pointIcon(iconname: "plus.circle.fill", pointSize: 22)
     }
 
     //显示几段
@@ -52,51 +53,29 @@ class TodosTableVC: UITableViewController {
         
         return cell
     }
-    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //选择cell时,会闪烁一下阴影
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TodoTableVCID") as! TodoTableVC
+        navigationController?.pushViewController(vc, animated: true)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == KAddTodoID{
+            let vc = segue.destination as! TodoTableVC
+            vc.delegate = self
+        }
     }
-    */
 
 }
+
+extension TodosTableVC: TodoTableVCDelegate{
+    func didAdd(name: String) {
+        todos.append(Todo(name: name, checked: false))
+        tableView.insertRows(at: [IndexPath(row: todos.count - 1, section: 0)], with: .automatic)
+        print(name)
+    }
+}
+
