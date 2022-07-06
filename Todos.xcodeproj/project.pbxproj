@@ -18,6 +18,8 @@
 		B168BF82283645ED004A61FB /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B168BF81283645ED004A61FB /* Todo.swift */; };
 		B1CF916E283252AC00F81EF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CF916D283252AC00F81EF9 /* Constants.swift */; };
 		B1DE94842872EEEA00B8E525 /* TodoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE94832872EEEA00B8E525 /* TodoTableVC.swift */; };
+		B1FC641C287580F90022912F /* TodosTableVC-DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC641B287580F80022912F /* TodosTableVC-DataSource.swift */; };
+		B1FC641E287581210022912F /* TodosTableVC-Deleagte.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC641D287581210022912F /* TodosTableVC-Deleagte.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		B168BF81283645ED004A61FB /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		B1CF916D283252AC00F81EF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B1DE94832872EEEA00B8E525 /* TodoTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableVC.swift; sourceTree = "<group>"; };
+		B1FC641928757F3A0022912F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B1FC641A28757F3A0022912F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B1FC641B287580F80022912F /* TodosTableVC-DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosTableVC-DataSource.swift"; sourceTree = "<group>"; };
+		B1FC641D287581210022912F /* TodosTableVC-Deleagte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosTableVC-Deleagte.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 				B168BF83283645FC004A61FB /* Model */,
 				B168BF7F28364224004A61FB /* TodoCell.swift */,
 				B1154E3D281BD0CD00F5A437 /* TodosTableVC.swift */,
+				B1FC641B287580F80022912F /* TodosTableVC-DataSource.swift */,
+				B1FC641D287581210022912F /* TodosTableVC-Deleagte.swift */,
 				B1CF916D283252AC00F81EF9 /* Constants.swift */,
 				B1154E32281BC4E100F5A437 /* Assets.xcassets */,
 				B1154E34281BC4E100F5A437 /* LaunchScreen.storyboard */,
@@ -132,6 +140,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B1154E1A281BC4DD00F5A437;
 			productRefGroup = B1154E24281BC4DD00F5A437 /* Products */;
@@ -165,7 +174,9 @@
 				B1CF916E283252AC00F81EF9 /* Constants.swift in Sources */,
 				B168BF8028364224004A61FB /* TodoCell.swift in Sources */,
 				B1DE94842872EEEA00B8E525 /* TodoTableVC.swift in Sources */,
+				B1FC641C287580F90022912F /* TodosTableVC-DataSource.swift in Sources */,
 				B1154E27281BC4DD00F5A437 /* AppDelegate.swift in Sources */,
+				B1FC641E287581210022912F /* TodosTableVC-Deleagte.swift in Sources */,
 				B1154E29281BC4DD00F5A437 /* SceneDelegate.swift in Sources */,
 				B1154E3E281BD0CD00F5A437 /* TodosTableVC.swift in Sources */,
 				B1154E31281BC4DD00F5A437 /* Todos.xcdatamodeld in Sources */,
@@ -179,6 +190,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1154E2D281BC4DD00F5A437 /* Base */,
+				B1FC641928757F3A0022912F /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -187,6 +199,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1154E35281BC4E100F5A437 /* Base */,
+				B1FC641A28757F3A0022912F /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -258,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

@@ -17,14 +17,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TodoCellID" id="kWH-8j-XR5" customClass="TodoCell" customModule="Todos" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="48.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kWH-8j-XR5" id="1dn-Ze-UUE">
-                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="48.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-k9-F9K">
-                                            <rect key="frame" x="16" y="8" width="353.5" height="32.5"/>
+                                            <rect key="frame" x="14" y="6" width="357.5" height="32.5"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbK-Ou-BA1">
                                                     <rect key="frame" x="0.0" y="0.5" width="44" height="32"/>
@@ -40,7 +40,7 @@
                                                     </buttonConfiguration>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pK2-Ob-NgG">
-                                                    <rect key="frame" x="76" y="6" width="277.5" height="20.5"/>
+                                                    <rect key="frame" x="76" y="6" width="281.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,15 +49,17 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="xAm-k9-F9K" secondAttribute="trailing" constant="16" id="Cg8-MB-KHy"/>
-                                        <constraint firstItem="xAm-k9-F9K" firstAttribute="top" secondItem="1dn-Ze-UUE" secondAttribute="top" constant="8" id="FQM-2z-WnB"/>
-                                        <constraint firstItem="xAm-k9-F9K" firstAttribute="leading" secondItem="1dn-Ze-UUE" secondAttribute="leading" constant="16" id="Ff0-jl-Wx8"/>
-                                        <constraint firstAttribute="bottom" secondItem="xAm-k9-F9K" secondAttribute="bottom" constant="8" id="ukP-lN-I3P"/>
+                                        <constraint firstAttribute="trailing" secondItem="xAm-k9-F9K" secondAttribute="trailing" constant="14" id="Cg8-MB-KHy"/>
+                                        <constraint firstItem="xAm-k9-F9K" firstAttribute="top" secondItem="1dn-Ze-UUE" secondAttribute="top" constant="6" id="FQM-2z-WnB"/>
+                                        <constraint firstItem="xAm-k9-F9K" firstAttribute="leading" secondItem="1dn-Ze-UUE" secondAttribute="leading" constant="14" id="Ff0-jl-Wx8"/>
+                                        <constraint firstAttribute="bottom" secondItem="xAm-k9-F9K" secondAttribute="bottom" constant="6" id="ukP-lN-I3P"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="66" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="checkBoxBtn" destination="AbK-Ou-BA1" id="pwL-L9-9ri"/>
                                     <outlet property="todoLabel" destination="pK2-Ob-NgG" id="JKU-v3-026"/>
+                                    <segue destination="b0L-cc-LQJ" kind="show" identifier="EditTodoID" id="a7Q-Ry-gLL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,7 +69,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="待办事项" id="4hU-kw-vDm">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle.fill" catalog="system" id="Gt7-sP-bvG">
+                        <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" id="Gt7-sP-bvG">
                             <connections>
                                 <segue destination="b0L-cc-LQJ" kind="show" identifier="AddTodoID" id="a0E-p4-HCq"/>
                             </connections>
@@ -162,6 +164,9 @@
             <point key="canvasLocation" x="121.73913043478262" y="13.392857142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="a0E-p4-HCq"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>

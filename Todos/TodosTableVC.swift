@@ -17,65 +17,43 @@ class TodosTableVC: UITableViewController {
         Todo(name: "神雕侠侣", checked: false)
     
     ]
+    var row = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        editButtonItem.image = pointIcon(iconname: "arrow.up.arrow.down.circle", pointSize: 22)
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         //初始化图片,设置图片的大小
         navigationItem.rightBarButtonItem?.image = pointIcon(iconname: "plus.circle.fill", pointSize: 22)
     }
 
-    //显示几段
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if isEditing{
+            editButtonItem.image = nil
+            editButtonItem.title = "完成"
+        }else{
+            editButtonItem.title = nil
+            editButtonItem.image = pointIcon(iconname: "arrow.up.arrow.down.circle.fill", pointSize: 22)
+        }
     }
+
+
+
     
-    //每段显示几行
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count
-    }
-
-    //每行显示的内容
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kTodoCellID, for: indexPath) as! TodoCell
-        let checkBoxBtn = cell.checkBoxBtn!
-        let todoLabel = cell.todoLabel!
-        checkBoxBtn.isSelected = todos[indexPath.row].checked
-        
-        todoLabel.text = todos[indexPath.row].name
-        todoLabel.textColor = todos[indexPath.row].checked ? .tertiaryLabel : .label
-        
-        checkBoxBtn.addAction(UIAction(handler: { action in
-            //bool值进行切换
-            self.todos[indexPath.row].checked.toggle()
-            let checked = self.todos[indexPath.row].checked
-            checkBoxBtn.isSelected = checked
-            todoLabel.textColor = checked ? .tertiaryLabel: .label
-        }), for: .touchUpInside)
-        
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //选择cell时,会闪烁一下阴影
-        tableView.deselectRow(at: indexPath, animated: true)
-        let vc = storyboard?.instantiateViewController(withIdentifier: "TodoTableVCID") as! TodoTableVC
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == KAddTodoID{
-            let vc = segue.destination as! TodoTableVC
-            vc.delegate = self
+        //利用segue的id判断点击的控件,从而进行不同的操作
+        let vc = segue.destination as! TodoTableVC
+        vc.delegate = self
+        if segue.identifier == kEditTodoID{
+            let cell = sender as! TodoCell
+            row = tableView.indexPath(for: cell)!.row
+            vc.name = todos[row].name
         }
     }
 
 }
 
-extension TodosTableVC: TodoTableVCDelegate{
-    func didAdd(name: String) {
-        todos.append(Todo(name: name, checked: false))
-        tableView.insertRows(at: [IndexPath(row: todos.count - 1, section: 0)], with: .automatic)
-        print(name)
-    }
-}
 

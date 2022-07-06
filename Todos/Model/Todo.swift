@@ -15,7 +15,7 @@ import Foundation
 //    }
 //    
 //}
-
+//初始化结构体
 struct Todo{
     var name: String
     var checked: Bool
