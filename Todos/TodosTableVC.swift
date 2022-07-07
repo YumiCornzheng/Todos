@@ -20,6 +20,7 @@ class TodosTableVC: UITableViewController {
     var row = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        //editButtonItem是封装好的专门用于list修改的UI控件.可用于cell的编辑,
         editButtonItem.image = pointIcon(iconname: "arrow.up.arrow.down.circle", pointSize: 22)
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -30,6 +31,8 @@ class TodosTableVC: UITableViewController {
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        //editButtonItemd的title和image只能存在一个,否则会相互影响展示
+        //isEditing能实时展示是否在编辑的状态
         if isEditing{
             editButtonItem.image = nil
             editButtonItem.title = "完成"

@@ -20,9 +20,11 @@ extension TodosTableVC{
 //        return "点击可以删除"
 //    }
     
-    
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {.none}
-    
+    //编辑状态下,要取消左滑删除功能
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        isEditing ? .none: .delete
+    }
+    //用来控制是否需要listItem下划线的缩进
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {false}
 }
 

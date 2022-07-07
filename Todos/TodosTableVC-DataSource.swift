@@ -26,28 +26,46 @@ extension TodosTableVC{
         //label颜色选中加灰处理
         todoLabel.textColor = todos[indexPath.row].checked ? .tertiaryLabel : .label
         
-        //选框点击切换处理
-        checkBoxBtn.addAction(UIAction(handler: { action in
-            //bool值进行切换
-            self.todos[indexPath.row].checked.toggle()
-            let checked = self.todos[indexPath.row].checked
-            checkBoxBtn.isSelected = checked
-            todoLabel.textColor = checked ? .tertiaryLabel: .label
-        }), for: .touchUpInside)
+//        if !isEditing{
+//            //选框点击切换处理
+//            checkBoxBtn.addAction(UIAction(handler: { action in
+//                //bool值进行切换
+//                self.todos[indexPath.row].checked.toggle()
+//                let checked = self.todos[indexPath.row].checked
+//                checkBoxBtn.isSelected = checked
+//                todoLabel.textColor = checked ? .tertiaryLabel: .label
+//            }), for: .touchUpInside)
+//        }
+        checkBoxBtn.tag = indexPath.row
+        //button的点击方法
+        checkBoxBtn.addTarget(self, action: #selector(toggleCheck), for: .touchUpInside)
         
         return cell
     }
-    
+    //cell的右滑删除功能
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             todos.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         }
     }
-    
+    //cell移动位置的时候触发,需要修改数据源
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let todoToRemove = todos[sourceIndexPath.row]
         todos.remove(at: sourceIndexPath.row)
         todos.insert(todoToRemove, at: destinationIndexPath.row)
+    }
+}
+
+
+extension TodosTableVC{
+    @objc func toggleCheck(checkBoxBtn: UIButton){
+        print("xx")
+        let row = checkBoxBtn.tag
+        todos[row].checked.toggle()
+        let checked = todos[row].checked
+        checkBoxBtn.isSelected = checked
+        let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TodoCell
+        cell.todoLabel.textColor = checked ? .tertiaryLabel: .label
     }
 }
