@@ -11,14 +11,7 @@ extension TodosTableVC{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //选择cell时,会闪烁一下阴影
         tableView.deselectRow(at: indexPath, animated: true)
-        //利用代码完成tableCell点击的跳转
-//        let vc = storyboard?.instantiateViewController(withIdentifier: kTodoTableVCID) as! TodoTableVC
-//        navigationController?.pushViewController(vc, animated: true)
     }
-//    自定义删除的文本
-//    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-//        return "点击可以删除"
-//    }
     
     //编辑状态下,要取消左滑删除功能
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -32,7 +25,13 @@ extension TodosTableVC: TodoTableVCDelegate{
     //代理拿回传入的值,塞入tableView数据中
     func didAdd(name: String) {
         //先将值塞入数组中
-        todos.append(Todo(name: name, checked: false))
+//        todos.append(Todo(name: name, checked: false))
+//        saveData()
+        let todo = Todo(context: context)
+        todo.name = name
+        todo.checked = false
+        todos.append(todo)
+        appDelegate.saveContext()
         //在tableView中插入值
         tableView.insertRows(at: [IndexPath(row: todos.count - 1, section: 0)], with: .automatic)
         print(name)
@@ -40,10 +39,8 @@ extension TodosTableVC: TodoTableVCDelegate{
     
     func didEdit(name: String) {
         todos[row].name = name
-        
-//        let indexPath = IndexPath(row: row, section: 0)
-//        let cell = tableView.cellForRow(at: indexPath) as! TodoCell
-//        cell.todoLabel.text = name
+        appDelegate.saveContext()
+//        saveData()
         //重新加载(另一写法)
         tableView.reloadData()
         

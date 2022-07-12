@@ -19,6 +19,12 @@ let kTodoTableVCID = "TodoTableVCID"
 //点击cell的segue的id
 let kEditTodoID = "EditTodoID"
 
+//userdefaults的key
+let kTodosKey = "TodoKey"
+
+//Todo数组排序的id
+let kOrderID = "orderID"
+
 //初始化图片的方法,主要用于修改图片的大小
 func pointIcon( iconname: String,pointSize: CGFloat = 22) -> UIImage?{
     let config = UIImage.SymbolConfiguration(pointSize: 22)

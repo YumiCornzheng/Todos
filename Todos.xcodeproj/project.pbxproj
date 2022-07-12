@@ -17,6 +17,7 @@
 		B168BF8028364224004A61FB /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B168BF7F28364224004A61FB /* TodoCell.swift */; };
 		B168BF82283645ED004A61FB /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B168BF81283645ED004A61FB /* Todo.swift */; };
 		B1CF916E283252AC00F81EF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CF916D283252AC00F81EF9 /* Constants.swift */; };
+		B1D6C7B12878380F00ED5264 /* TodosTableVC-storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D6C7B02878380F00ED5264 /* TodosTableVC-storage.swift */; };
 		B1DE94842872EEEA00B8E525 /* TodoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE94832872EEEA00B8E525 /* TodoTableVC.swift */; };
 		B1FC641C287580F90022912F /* TodosTableVC-DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC641B287580F80022912F /* TodosTableVC-DataSource.swift */; };
 		B1FC641E287581210022912F /* TodosTableVC-Deleagte.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC641D287581210022912F /* TodosTableVC-Deleagte.swift */; };
@@ -35,6 +36,7 @@
 		B168BF7F28364224004A61FB /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		B168BF81283645ED004A61FB /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		B1CF916D283252AC00F81EF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B1D6C7B02878380F00ED5264 /* TodosTableVC-storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosTableVC-storage.swift"; sourceTree = "<group>"; };
 		B1DE94832872EEEA00B8E525 /* TodoTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableVC.swift; sourceTree = "<group>"; };
 		B1FC641928757F3A0022912F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		B1FC641A28757F3A0022912F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				B1FC641B287580F80022912F /* TodosTableVC-DataSource.swift */,
 				B1FC641D287581210022912F /* TodosTableVC-Deleagte.swift */,
 				B1CF916D283252AC00F81EF9 /* Constants.swift */,
+				B1D6C7B02878380F00ED5264 /* TodosTableVC-storage.swift */,
 				B1154E32281BC4E100F5A437 /* Assets.xcassets */,
 				B1154E34281BC4E100F5A437 /* LaunchScreen.storyboard */,
 				B1154E37281BC4E100F5A437 /* Info.plist */,
@@ -175,6 +178,7 @@
 				B168BF8028364224004A61FB /* TodoCell.swift in Sources */,
 				B1DE94842872EEEA00B8E525 /* TodoTableVC.swift in Sources */,
 				B1FC641C287580F90022912F /* TodosTableVC-DataSource.swift in Sources */,
+				B1D6C7B12878380F00ED5264 /* TodosTableVC-storage.swift in Sources */,
 				B1154E27281BC4DD00F5A437 /* AppDelegate.swift in Sources */,
 				B1FC641E287581210022912F /* TodosTableVC-Deleagte.swift in Sources */,
 				B1154E29281BC4DD00F5A437 /* SceneDelegate.swift in Sources */,

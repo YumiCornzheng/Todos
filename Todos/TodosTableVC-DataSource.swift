@@ -19,6 +19,8 @@ extension TodosTableVC{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //每一行的每一个cell都会经过一遍加载
         let cell = tableView.dequeueReusableCell(withIdentifier: kTodoCellID, for: indexPath) as! TodoCell
+        todos[indexPath.row].orderID = Int16(indexPath.row)
+        appDelegate.saveContext()
         let checkBoxBtn = cell.checkBoxBtn!
         let todoLabel = cell.todoLabel!
         checkBoxBtn.isSelected = todos[indexPath.row].checked
@@ -45,7 +47,10 @@ extension TodosTableVC{
     //cell的右滑删除功能
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
+            context.delete(todos[indexPath.row])
             todos.remove(at: indexPath.row)
+            appDelegate.saveContext()
+//            saveData()
             tableView.reloadData()
         }
     }
@@ -54,18 +59,25 @@ extension TodosTableVC{
         let todoToRemove = todos[sourceIndexPath.row]
         todos.remove(at: sourceIndexPath.row)
         todos.insert(todoToRemove, at: destinationIndexPath.row)
+//        saveData()
+//        appDelegate.saveContext()
+        tableView.reloadData()
     }
 }
 
 
 extension TodosTableVC{
     @objc func toggleCheck(checkBoxBtn: UIButton){
-        print("xx")
+        
         let row = checkBoxBtn.tag
+        print("tag:\(checkBoxBtn.tag)")
         todos[row].checked.toggle()
+//        saveData()
+        appDelegate.saveContext()
         let checked = todos[row].checked
         checkBoxBtn.isSelected = checked
-        let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TodoCell
+        print("orderID:\(todos[row].orderID)")
+        let cell = tableView.cellForRow(at: IndexPath(row: Int(todos[row].orderID), section: 0)) as! TodoCell
         cell.todoLabel.textColor = checked ? .tertiaryLabel: .label
     }
 }

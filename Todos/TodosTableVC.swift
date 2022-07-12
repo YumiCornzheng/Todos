@@ -9,14 +9,12 @@ import UIKit
 
 class TodosTableVC: UITableViewController {
     //对数据进行初始化赋值
-    var todos = [
-        Todo(name: "射雕英雄传", checked: false),
-        Todo(name: "鹿鼎记", checked: true),
-        Todo(name: "天龙八部", checked: false),
-        Todo(name: "倚天屠龙记", checked: false),
-        Todo(name: "神雕侠侣", checked: false)
-    
-    ]
+    var todos: [Todo] = []
+//    Todo(name: "射雕英雄传", checked: false),
+//    Todo(name: "鹿鼎记", checked: true),
+//    Todo(name: "天龙八部", checked: false),
+//    Todo(name: "倚天屠龙记", checked: false),
+//    Todo(name: "神雕侠侣", checked: false)
     var row = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +24,22 @@ class TodosTableVC: UITableViewController {
         
         //初始化图片,设置图片的大小
         navigationItem.rightBarButtonItem?.image = pointIcon(iconname: "plus.circle.fill", pointSize: 22)
+
+//        if let data = UserDefaults.standard.data(forKey: kTodosKey){
+//            if let todos = try? JSONDecoder().decode([Todo].self, from: data){
+//                self.todos = todos
+//            }else{
+//                print("解码失败")
+//            }
+//        }
+        let request = Todo.fetchRequest()
+        //对取出的结果进行排序
+        request.sortDescriptors = [NSSortDescriptor(key: kOrderID, ascending: true)]
+        if let todos = try? context.fetch(request){
+            self.todos = todos
+        }else{
+            print("从SQLite获取数据失败")
+        }
     }
 
 
